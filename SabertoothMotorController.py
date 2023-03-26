@@ -29,26 +29,22 @@ class SabertoothMotorContoller(MotorControllerInterface):
     # The Sabertooth motor controller uses a different speed range for each motor
     # Motor 1: 0-127 (0 is stop and 127 is full speed forward)
     # Motor 2: 128-255 (128 is stop and 255 is full speed forward)
-    # This function normalizes the input speed (of -100 to 100) to a value between
-    # -1 and 1 and then calculates the Sabertooth command and speed based on the
-    # input speed
+    # This function input is assumed to be a value between -1 and 1. It then
+    # calculates the Sabertooth command and speed based on the input speed
     def set_motor_speed(self, motor_number, speed):
-        # Normalize the input speed to a value between -1 and 1
-        normalized_speed = speed / 100
-
         # Calculate the Sabertooth command and speed based on the input speed
-        if normalized_speed >= 0:
+        if speed >= 0:
             command = 0
             if motor_number == 0:
-                sabertooth_speed = int(normalized_speed * 127)
+                sabertooth_speed = int(speed * 127)
             else:
-                sabertooth_speed = int(normalized_speed * (255 - 128)) + 128
+                sabertooth_speed = int(speed * (255 - 128)) + 128
         else:
             command = 1
             if motor_number == 0:
-                sabertooth_speed = int(-normalized_speed * 127)
+                sabertooth_speed = int(-speed * 127)
             else:
-                sabertooth_speed = int(-normalized_speed * (255 - 128)) + 128
+                sabertooth_speed = int(-speed * (255 - 128)) + 128
 
         self.send_sabertooth_command(motor_number, command, sabertooth_speed)
 
