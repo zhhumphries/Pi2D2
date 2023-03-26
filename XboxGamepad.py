@@ -192,7 +192,7 @@ class XboxGamepad(GamepadInterface):
         async for event in self.device_file.async_read_loop():
             if not(self.power_on): #stop reading device when power_on = false
                 break
-            print(str(event) + ' ' + str(categorize(event)))
+            #print(str(event) + ' ' + str(categorize(event)))
             if (event.type == ecodes.EV_KEY): # type is button
                 if (event.code == 167): # code is button record
                     self.button_record = event.value
