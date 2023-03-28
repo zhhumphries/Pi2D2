@@ -3,35 +3,35 @@
 Pi2D2 is a simple control system for controlling an R2D2 and other droids via a connected bluetooth Gamepad.
 ## Current Features Include:
 - Xbox Wireless Controller Support
--- Left Bumper - In place smoothed left rotation
--- Right Bumper - In place smoothed right rotation
--- Left Trigger - Smooth reverse at 25% power
--- Right Trigger - Smooth forward at TBD power
--- Left Joystick - Smoothed directional control at TBD power
+    - Left Bumper - In place smoothed left rotation
+    - Right Bumper - In place smoothed right rotation
+    - Left Trigger - Smooth reverse at 25% power
+    - Right Trigger - Smooth forward at TBD power
+    - Left Joystick - Smoothed directional control at TBD power
 - Sabertooth Dual 2x32 motor controller
--- Packetized Serial control of M1 and M2
+    - Packetized Serial control of M1 and M2
 
 ## Setup
 
 - Connect Xbox Wireless Controller to Raspberry Pi (running Raspberry PI OS)
--- Run `bluetoothctl scan on`
--- Put Xbox Wireless Controller in Pairing mode (little button on top).
--- Take note of the MAC address that is associated with the Xbox Wireless Controller
--- Run `bluetoothctl pair [MAC_ADDRESS]` (MAC_ADDRESS is in the format of AA:AA:AA:AA:AA:AA)
--- Run `bluetoothctl connect [MAC_ADDRESS]`
--- Run `bluetoothctl scan off`
+    - Run `bluetoothctl scan on`
+    - Put Xbox Wireless Controller in Pairing mode (little button on top).
+    - Take note of the MAC address that is associated with the Xbox Wireless Controller
+    - Run `bluetoothctl pair [MAC_ADDRESS]` (MAC_ADDRESS is in the format of AA:AA:AA:AA:AA:AA)
+    - Run `bluetoothctl connect [MAC_ADDRESS]`
+    - Run `bluetoothctl scan off`
 - Enable UART on the PI and disable serial0 console
--- Update /boot/cmdline.txt and remove the following text:
+    - Update /boot/cmdline.txt and remove the following text:
 `console=serial0,115200`
--- Update /boot/config.txt and add the following to the end:
+    - Update /boot/config.txt and add the following to the end:
 `enable_uart=1`
--- Restart the PI
+    - Restart the PI
 - Connect Raspberry PI's Pin 6 Ground to 0V terminal on Sabertooth
 - Connect Raspberry PI's Pin 8 UART0 TX to S1 terminal on Sabertooth
 - Configure Sabertooth DIP switches for Serial Control
--- DIP Switch 1 and 2 set to off for Serial Control
--- DIP Switch 4 and 5 to on to use Packet Serial with a default address of 128
--- Wizard for setting DIP switches can be found here: https://www.dimensionengineering.com/datasheets/USBSabertoothDIPWizard/
+    - DIP Switch 1 and 2 set to off for Serial Control
+    - DIP Switch 4 and 5 to on to use Packet Serial with a default address of 128
+    - Wizard for setting DIP switches can be found here: https://www.dimensionengineering.com/datasheets/USBSabertoothDIPWizard/
 - Install evdev and python-serial:
     ```sh
     sudo pip3 install evdev
@@ -47,7 +47,7 @@ Currently, instructions assume you are going to SSH into the Raspberry PI and ru
 ## Known Issues
 - In the event that the Xbox remote disconnects or turns off, the script will crash
 - If the SSH session is terminated, the last command sent to the Sabertooth will continue
--- This only affects SSH approach for running the script.
+    - This only affects SSH approach for running the script.
 
 ## License
 
