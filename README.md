@@ -3,7 +3,13 @@
 Pi2D2 is a simple control system for controlling an R2D2 and other droids via a connected bluetooth Gamepad.
 ## Current Features Include:
 - Xbox Wireless Controller Support
-- Sabertooth Dual 2x32 motor controller (Packetized Serial)
+-- Left Bumper - In place smoothed left rotation
+-- Right Bumper - In place smoothed right rotation
+-- Left Trigger - Smooth reverse at 25% power
+-- Right Trigger - Smooth forward at TBD power
+-- Left Joystick - Smoothed directional control at TBD power
+- Sabertooth Dual 2x32 motor controller
+-- Packetized Serial control of M1 and M2
 
 ## Setup
 
